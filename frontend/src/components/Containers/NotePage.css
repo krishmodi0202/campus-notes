@@ -1,0 +1,166 @@
+:root {
+    --bg-primary: #1a1a2e;
+    --bg-secondary: #16213e;
+    --text-primary: #e94560;
+    --text-secondary: #0f3460;
+    --accent: #e94560;
+    --card-bg: #16213e;
+    --card-hover: #0f3460;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: #ffffff;
+    font-family: "Arial", sans-serif;
+}
+
+.notes-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.filters-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.filters-container label {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.filters-container select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--text-secondary);
+    font-size: 1rem;
+    margin-top: 5px;
+    background-color: var(--bg-secondary);
+    color: #ffffff;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.note-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.note-card:hover {
+    transform: translateY(-5px);
+    background-color: var(--card-hover);
+}
+
+.note-card.pinned {
+    border: 2px solid var(--accent);
+    background-color: var(--text-secondary);
+}
+
+.note-title {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pin-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--accent);
+    transition: all 0.3s ease;
+}
+
+.pin-button:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+.note-card p {
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.note-card strong {
+    color: var(--accent);
+}
+
+.loading,
+.error {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-top: 50px;
+}
+
+.error {
+    color: #ff6b6b;
+}
+
+@media (max-width: 768px) {
+    .filters-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-primary);
+}
+
+.view-button,
+.download-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.view-button:hover,
+.download-button:hover {
+    background-color: #45a049;
+}

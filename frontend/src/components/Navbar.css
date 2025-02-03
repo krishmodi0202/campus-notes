@@ -1,0 +1,257 @@
+/* Navbar.css */
+.navbar {
+    background-color: #1a1a2e;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.navbar-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.navbar-logo {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #e94560;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    flex-shrink: 0;
+}
+
+.navbar-logo:hover {
+    color: #ff2e63;
+    text-shadow: 0 0 15px rgba(233, 69, 96, 0.3);
+}
+
+.navbar-links {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    margin: 0 2rem;
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 0;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #e94560;
+    transform: translateY(-2px);
+}
+
+/* Enhanced Auth Buttons */
+.auth-buttons {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    margin-left: auto;
+}
+
+.auth-button {
+    padding: 0.8rem 2.5rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 140px;
+    text-align: center;
+    position: relative;
+}
+
+.login-button {
+    background-color: rgba(233, 69, 96, 0.1);
+    border: 2px solid #e94560;
+    color: #e94560;
+}
+
+.login-button:hover {
+    background-color: rgba(233, 69, 96, 0.2);
+    box-shadow: 0 0 20px rgba(233, 69, 96, 0.4);
+    transform: translateY(-3px) scale(1.02);
+}
+
+.signup-button {
+    background: linear-gradient(135deg, #e94560 0%, #ff2e63 100%);
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+}
+
+.signup-button:hover {
+    background: linear-gradient(135deg, #ff2e63 0%, #e94560 100%);
+    box-shadow: 0 8px 25px rgba(233, 69, 96, 0.5);
+    transform: translateY(-3px) scale(1.02);
+}
+
+.auth-button:active {
+    transform: translateY(1px) scale(0.98);
+}
+
+/* Glowing animation for signup button */
+@keyframes glow {
+    0% {
+        box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 4px 25px rgba(233, 69, 96, 0.5);
+    }
+
+    100% {
+        box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+    }
+}
+
+.signup-button {
+    animation: glow 2s infinite;
+}
+
+/* Enhanced Responsive Design */
+@media screen and (max-width: 1200px) {
+    .navbar-container {
+        padding: 0 15px;
+    }
+
+    .auth-button {
+        padding: 0.8rem 2rem;
+        min-width: 120px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .navbar-links {
+        gap: 2rem;
+    }
+
+    .auth-button {
+        padding: 0.7rem 1.8rem;
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 1rem;
+    }
+
+    .navbar-container {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .navbar-links {
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+        margin: 1rem 0;
+    }
+
+    .auth-buttons {
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+        gap: 1rem;
+        margin: 0;
+    }
+
+    .auth-button {
+        padding: 0.8rem 1.5rem;
+        width: 45%;
+        max-width: 200px;
+        min-width: 140px;
+    }
+}
+
+
+/* Existing styles... */
+
+.react-icon {
+    display: none;
+    /* Hide the icon by default */
+}
+
+
+@media screen and (max-width: 768px) {
+    .react-icon {
+        display: block;
+        /* Show the icon */
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+    }
+
+    .navbar-container {
+        flex-direction: column;
+        /* Stack the navbar items vertically on small screens */
+    }
+
+    .navbar-links {
+        display: none;
+        /* Hide the menu by default */
+        width: 100%;
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .navbar-links.open {
+        display: block;
+        /* Show the menu when 'open' class is applied */
+    }
+
+    .nav-link {
+        padding: 1rem 0;
+        display: block;
+        font-size: 1.2rem;
+    }
+
+    .auth-buttons {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+        margin: 0;
+        width: 100%;
+    }
+
+    .auth-button {
+        width: 45%;
+    }
+}
+
+/* Further responsiveness for smaller devices */
+@media screen and (max-width: 480px) {
+    .react-icon {
+        top: 15px;
+        right: 15px;
+    }
+
+    .navbar-logo {
+        font-size: 1.5rem;
+    }
+
+    .auth-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .auth-button {
+        width: 100%;
+    }
+}
