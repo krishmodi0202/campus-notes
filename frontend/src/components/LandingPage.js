@@ -54,7 +54,7 @@ const LandingPage = () => {
       </section>
 
       {/* Image Section */}
-      <section className="features-section">
+      {/* <section className="features-section">
         <div className="features-grid">
           <img 
             src={photo1}
@@ -67,7 +67,7 @@ const LandingPage = () => {
             style={{ width: '100%', borderRadius: '0px' }}
           />
         </div>
-      </section>
+      </section> */}
 
       {/* Footer */}
       <footer className="landing-footer">
