@@ -1,5 +1,3 @@
-// src/components/Home.js
-
 import React from "react";
 import LandingPage from "./LandingPage";  // Import LandingPage component
            // Import Footer component

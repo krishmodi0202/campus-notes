@@ -1,13 +1,28 @@
 /* Navbar.css */
+:root {
+    --primary-dark: #1a1a2e;
+    --secondary-dark: #16213e;
+    --accent-color: #0f3460;
+    --text-color: #e94560;
+    --light-text: #ffffff;
+    --hover-color: #ff2e63;
+    --gradient-start: #0f3460;
+    --gradient-end: #16213e;
+}
+
 .navbar {
-    background-color: #1a1a2e;
+    background: linear-gradient(to right, var(--primary-dark), var(--secondary-dark));
     padding: 1rem 2rem;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
     width: 100%;
     box-sizing: border-box;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    animation: gradientFlow 15s ease infinite;
+    background-size: 400% 400%;
 }
 
 .navbar-container {
@@ -17,20 +32,38 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
+    position: relative;
 }
 
 .navbar-logo {
     font-size: 2rem;
     font-weight: 800;
-    color: #e94560;
+    color: var(--text-color);
     text-decoration: none;
-    transition: color 0.3s ease;
-    flex-shrink: 0;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    text-shadow: 0 0 15px rgba(233, 69, 96, 0.3);
+    animation: logoGlow 3s infinite;
+}
+
+.navbar-logo::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--text-color);
+    transition: width 0.3s ease;
 }
 
 .navbar-logo:hover {
-    color: #ff2e63;
-    text-shadow: 0 0 15px rgba(233, 69, 96, 0.3);
+    color: var(--hover-color);
+    transform: scale(1.05);
+}
+
+.navbar-logo:hover::after {
+    width: 100%;
 }
 
 .navbar-links {
@@ -41,7 +74,7 @@
 }
 
 .nav-link {
-    color: #ffffff;
+    color: var(--light-text);
     text-decoration: none;
     font-size: 1.1rem;
     font-weight: 500;
@@ -50,12 +83,26 @@
     transition: all 0.3s ease;
 }
 
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--text-color);
+    transition: width 0.3s ease;
+}
+
 .nav-link:hover {
-    color: #e94560;
+    color: var(--text-color);
     transform: translateY(-2px);
 }
 
-/* Enhanced Auth Buttons */
+.nav-link:hover::before {
+    width: 100%;
+}
+
 .auth-buttons {
     display: flex;
     gap: 1.5rem;
@@ -65,7 +112,7 @@
 
 .auth-button {
     padding: 0.8rem 2.5rem;
-    border-radius: 12px;
+    border-radius: 8px;
     font-size: 1.1rem;
     font-weight: 600;
     text-decoration: none;
@@ -73,185 +120,117 @@
     min-width: 140px;
     text-align: center;
     position: relative;
+    overflow: hidden;
+    border: none;
+    backdrop-filter: blur(5px);
+}
+
+.auth-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.6s;
+}
+
+.auth-button:hover::before {
+    left: 100%;
 }
 
 .login-button {
-    background-color: rgba(233, 69, 96, 0.1);
-    border: 2px solid #e94560;
-    color: #e94560;
+    background: transparent;
+    border: 2px solid var(--text-color);
+    color: var(--text-color);
+    box-shadow: 0 4px 15px rgba(233, 69, 96, 0.2);
 }
 
 .login-button:hover {
-    background-color: rgba(233, 69, 96, 0.2);
-    box-shadow: 0 0 20px rgba(233, 69, 96, 0.4);
-    transform: translateY(-3px) scale(1.02);
+    background: rgba(233, 69, 96, 0.25);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 20px rgba(233, 69, 96, 0.3);
 }
 
 .signup-button {
-    background: linear-gradient(135deg, #e94560 0%, #ff2e63 100%);
-    color: #ffffff;
-    border: none;
-    box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+    background: var(--text-color);
+    color: var(--light-text);
+    box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
 }
 
 .signup-button:hover {
-    background: linear-gradient(135deg, #ff2e63 0%, #e94560 100%);
+    background: var(--hover-color);
+    transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(233, 69, 96, 0.5);
-    transform: translateY(-3px) scale(1.02);
 }
 
 .auth-button:active {
     transform: translateY(1px) scale(0.98);
 }
 
-/* Glowing animation for signup button */
-@keyframes glow {
-    0% {
-        box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
-    }
-
-    50% {
-        box-shadow: 0 4px 25px rgba(233, 69, 96, 0.5);
-    }
-
-    100% {
-        box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
-    }
-}
-
-.signup-button {
-    animation: glow 2s infinite;
-}
-
-/* Enhanced Responsive Design */
-@media screen and (max-width: 1200px) {
-    .navbar-container {
-        padding: 0 15px;
-    }
-
-    .auth-button {
-        padding: 0.8rem 2rem;
-        min-width: 120px;
-    }
-}
-
-@media screen and (max-width: 992px) {
-    .navbar-links {
-        gap: 2rem;
-    }
-
-    .auth-button {
-        padding: 0.7rem 1.8rem;
-        font-size: 1rem;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .navbar {
-        padding: 1rem;
-    }
-
-    .navbar-container {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-
-    .navbar-links {
-        flex-direction: column;
-        width: 100%;
-        gap: 1rem;
-        margin: 1rem 0;
-    }
-
-    .auth-buttons {
-        flex-direction: row;
-        justify-content: center;
-        width: 100%;
-        gap: 1rem;
-        margin: 0;
-    }
-
-    .auth-button {
-        padding: 0.8rem 1.5rem;
-        width: 45%;
-        max-width: 200px;
-        min-width: 140px;
-    }
-}
-
-
-/* Existing styles... */
-
 .react-icon {
-    display: none;
-    /* Hide the icon by default */
+    transition: all 0.3s ease;
 }
 
+.react-icon.open {
+    transform: rotate(90deg);
+}
 
 @media screen and (max-width: 768px) {
-    .react-icon {
-        display: block;
-        /* Show the icon */
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        cursor: pointer;
-    }
-
-    .navbar-container {
-        flex-direction: column;
-        /* Stack the navbar items vertically on small screens */
-    }
-
     .navbar-links {
-        display: none;
-        /* Hide the menu by default */
-        width: 100%;
-        text-align: center;
-        margin-top: 2rem;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
     }
 
     .navbar-links.open {
-        display: block;
-        /* Show the menu when 'open' class is applied */
+        max-height: 500px;
+        transition: max-height 0.5s ease-in;
     }
 
     .nav-link {
-        padding: 1rem 0;
-        display: block;
-        font-size: 1.2rem;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+    }
+
+    .navbar-links.open .nav-link {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.2s;
     }
 
     .auth-buttons {
-        flex-direction: row;
-        justify-content: center;
-        gap: 1rem;
-        margin: 0;
-        width: 100%;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
     }
 
-    .auth-button {
-        width: 45%;
+    .navbar-links.open ~ .auth-buttons {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.4s;
     }
 }
 
-/* Further responsiveness for smaller devices */
-@media screen and (max-width: 480px) {
-    .react-icon {
-        top: 15px;
-        right: 15px;
-    }
+@keyframes logoGlow {
+    0% { text-shadow: 0 0 15px rgba(233, 69, 96, 0.3); }
+    50% { text-shadow: 0 0 25px rgba(233, 69, 96, 0.5); }
+    100% { text-shadow: 0 0 15px rgba(233, 69, 96, 0.3); }
+}
 
+@media screen and (max-width: 480px) {
+    .navbar {
+        padding: 1rem;
+    }
+    
+    .auth-button {
+        padding: 0.8rem 1.5rem;
+        min-width: 120px;
+    }
+    
     .navbar-logo {
         font-size: 1.5rem;
-    }
-
-    .auth-buttons {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .auth-button {
-        width: 100%;
     }
 }
