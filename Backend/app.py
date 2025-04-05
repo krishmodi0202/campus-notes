@@ -12,20 +12,18 @@ app = Flask(__name__)
 
 # Enable CORS for all routes
 CORS(app, resources={r"/*": {"origins": "*"}})
-
 # Set up logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # MongoDB setup
 try:
-    MONGO_URI = "mongodb+srv://xibanshsonidpsv:ansh@cluster0.tsysf.mongodb.net/"
-    client = pymongo.MongoClient(MONGO_URI, serverSelectionTimeoutMS=5000)
-    client.admin.command('ping')  # Test connection
-    logging.info("Connected to MongoDB successfully!")
+    MONGO_URI = "mongodb://localhost:27017/"
+    client = pymongo.MongoClient(MONGO_URI)
     db = client['student_notes']
     notes_collection = db['notes']
     user_collection = db['users']
+    logging.info("Connected to local MongoDB successfully!")
 except Exception as e:
     logging.error(f"Error connecting to MongoDB: {e}")
     notes_collection = None
