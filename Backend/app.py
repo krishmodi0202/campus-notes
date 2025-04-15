@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # MongoDB setup
 try:
-    MONGO_URI = "mongodb://localhost:27017/"
+    MONGO_URI = ""
     client = pymongo.MongoClient(MONGO_URI)
     db = client['student_notes']
     notes_collection = db['notes']
