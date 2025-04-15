@@ -5,8 +5,7 @@ import { BookOpen, Share2, Users } from 'lucide-react';
 
 const LandingPage = () => {
   return (
-    <div className="landing-container">
-      {/* Hero Section */}
+    <div className="landing-container">\
       <section className="hero-section">
         <div className="hero-content">
           <h1 className="hero-title">Welcome to Student Notes</h1>
@@ -24,7 +23,6 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Features Section */}
       <section className="features-section">
         <div className="features-grid">
           <div className="feature-card">
@@ -47,10 +45,9 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="landing-footer">
         <p>&copy; 2025 Student Notes. All Rights Reserved.</p>
-        <p>Developed by Ansh Soni</p>
+        <p>Developed by Krish Modi</p>
       </footer>
     </div>
   );

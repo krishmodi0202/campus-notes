@@ -1,42 +1,118 @@
-/* PostNotes.css */
+/* PostNotes.css - Enhanced */
 .post-notes-container {
     min-height: 100vh;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
     padding: 60px 20px;
     color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background animations */
+.post-notes-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(96, 165, 250, 0.1) 0%, transparent 50%);
+    z-index: 1;
 }
 
 .form-wrapper {
     width: 100%;
     max-width: 800px;
-    background: rgba(255, 255, 255, 0.07);
+    background: rgba(15, 23, 42, 0.7);
     border-radius: 20px;
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(59, 130, 246, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 
+                0 0 40px rgba(59, 130, 246, 0.1);
     overflow: hidden;
+    position: relative;
+    z-index: 2;
+    animation: formAppear 0.6s ease-out;
+}
+
+@keyframes formAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #3b82f6, #2563eb, #1d4ed8);
+    z-index: 3;
 }
 
 .form-header {
     text-align: center;
     padding: 40px 20px;
-    background: rgba(255, 255, 255, 0.03);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(15, 23, 42, 0.8);
+    border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+    position: relative;
 }
 
 .form-header h2 {
     font-size: 36px;
     margin: 0 0 10px;
     color: #ffffff;
+    position: relative;
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-header h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, #3b82f6, #2563eb);
+    margin: 15px auto 0;
+    border-radius: 2px;
 }
 
 .form-header p {
     font-size: 16px;
-    color: #a0aec0;
+    color: #94a3b8;
     margin: 0;
+    animation: fadeIn 0.5s ease-out 0.2s both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 form {
@@ -46,7 +122,27 @@ form {
 .form-section {
     margin-bottom: 30px;
     padding-bottom: 30px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+    animation: sectionAppear 0.5s ease-out both;
+}
+
+@keyframes sectionAppear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-section:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.form-section:nth-child(3) {
+    animation-delay: 0.2s;
 }
 
 .form-section:last-child {
@@ -55,37 +151,60 @@ form {
 
 .form-group {
     margin-bottom: 20px;
+    animation: fadeIn 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.form-group:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.form-group:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.form-group:nth-child(3) {
+    animation-delay: 0.3s;
 }
 
 label {
     display: block;
     margin-bottom: 8px;
     font-size: 14px;
-    color: #a0aec0;
+    color: #94a3b8;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 input,
 select {
     width: 100%;
     padding: 12px 16px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid rgba(59, 130, 246, 0.2);
     border-radius: 8px;
     color: #ffffff;
     font-size: 16px;
     transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 input:focus,
 select:focus {
     outline: none;
-    border-color: #f86868;
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    background: rgba(30, 41, 59, 0.7);
+}
+
+input:hover,
+select:hover {
+    border-color: rgba(59, 130, 246, 0.5);
 }
 
 select {
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2394a3b8' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 12px center;
     background-size: 20px;
@@ -103,33 +222,70 @@ select:disabled {
 
 .file-upload-label {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 2px dashed rgba(255, 255, 255, 0.1);
+    justify-content: center;
+    padding: 30px 20px;
+    background: rgba(30, 41, 59, 0.4);
+    border: 2px dashed rgba(59, 130, 246, 0.2);
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.file-upload-label::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
+    z-index: -1;
 }
 
 .file-upload-label:hover {
     border-color: #3b82f6;
     background: rgba(59, 130, 246, 0.1);
+    transform: translateY(-2px);
+}
+
+.file-upload-label:active {
+    transform: translateY(0);
 }
 
 .upload-icon {
-    font-size: 24px;
-    margin-right: 12px;
+    font-size: 32px;
+    margin-bottom: 12px;
+    color: #60a5fa;
+    transition: all 0.3s ease;
+}
+
+.file-upload-label:hover .upload-icon {
+    transform: scale(1.1);
+    color: #3b82f6;
+}
+
+.upload-text {
+    font-weight: 500;
+    color: #e2e8f0;
+    margin-bottom: 5px;
 }
 
 .file-name {
-    color: #a0aec0;
+    color: #94a3b8;
+    margin-top: 5px;
+    text-align: center;
+    word-break: break-all;
+    max-width: 100%;
 }
 
 .file-format-hint {
-    margin-top: 8px;
+    margin-top: 10px;
     font-size: 12px;
-    color: #a0aec0;
+    color: #94a3b8;
     text-align: center;
 }
 
@@ -144,12 +300,40 @@ button[type="submit"] {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-top: 20px;
+    margin-top: 30px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+button[type="submit"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: 0.6s;
+}
+
+button[type="submit"]:hover::before {
+    left: 100%;
 }
 
 button[type="submit"]:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+}
+
+button[type="submit"]:active:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
 }
 
 button[type="submit"]:disabled {
@@ -157,10 +341,101 @@ button[type="submit"]:disabled {
     cursor: not-allowed;
 }
 
+/* Form feedback animation */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}
+
+.form-error {
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2) !important;
+    animation: shake 0.4s ease-in-out;
+}
+
+.error-message {
+    color: #ef4444;
+    font-size: 12px;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.error-message svg {
+    margin-right: 5px;
+    flex-shrink: 0;
+}
+
+/* Success feedback */
+.success-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    margin: 20px 0;
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    border-radius: 8px;
+    color: #4ade80;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.success-message svg {
+    margin-right: 10px;
+}
+
+/* Floating label animation (optional enhancement) */
+.form-group.floating {
+    position: relative;
+}
+
+.form-group.floating label {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    background: transparent;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    color: #94a3b8;
+    padding: 0 5px;
+    font-size: 16px;
+    z-index: 1;
+}
+
+.form-group.floating input:focus ~ label,
+.form-group.floating input:not(:placeholder-shown) ~ label {
+    top: -10px;
+    left: 10px;
+    font-size: 12px;
+    color: #3b82f6;
+    background: rgba(15, 23, 42, 0.8);
+    padding: 0 5px;
+}
+
+/* Progress bar for file upload */
+.upload-progress {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.upload-progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, #3b82f6, #2563eb);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .form-wrapper {
         margin: 0 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
     }
 
     .form-header {
@@ -173,5 +448,34 @@ button[type="submit"]:disabled {
 
     form {
         padding: 20px;
+    }
+    
+    button[type="submit"] {
+        padding: 14px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .post-notes-container {
+        padding: 30px 15px;
+    }
+    
+    .form-header h2 {
+        font-size: 24px;
+    }
+    
+    .form-header p {
+        font-size: 14px;
+    }
+    
+    .form-section {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+    
+    input, select {
+        padding: 10px 14px;
+        font-size: 14px;
     }
 }

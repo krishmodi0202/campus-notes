@@ -139,38 +139,6 @@ def after_request(response):
     logger.info(f"Sending response with status: {response.status}")
     return response
 
-# @app.route('/api/notes', methods=['POST'])
-# def upload_notes():
-#     if 'file' not in request.files:
-#         return jsonify({"error": "No file part"}), 400
-    
-#     file = request.files['file']
-#     if file.filename == '':
-#         return jsonify({"error": "No selected file"}), 400
-    
-#     if file and allowed_file(file.filename):
-#         filename = secure_filename(file.filename)
-#         file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-#         file.save(file_path)
-        
-#         note_data = {
-#             "name": request.form.get('name'),
-#             "division": request.form.get('division'),
-#             "topicName": request.form.get('topicName'),
-#             "subject": request.form.get('subject'),
-#             "facultyName": request.form.get('facultyName'),
-#             "semester": request.form.get('semester'),
-#             "unitNumber": request.form.get('unitNumber'),
-#             "notesType": request.form.get('notesType'),
-#             "file_path": filename
-#         }
-        
-#         result = notes_collection.insert_one(note_data)
-#         return jsonify({"message": "Notes uploaded successfully", "id": str(result.inserted_id)}), 201
-    
-#     return jsonify({"error": "File type not allowed"}), 400
-
-
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
     try:
